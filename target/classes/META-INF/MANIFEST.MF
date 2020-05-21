@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Implementation-Title: zipkin-server
+Implementation-Title: zipkin
 Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: ATUL
 Implementation-Vendor-Id: com.example

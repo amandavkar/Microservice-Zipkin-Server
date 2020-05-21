@@ -1,0 +1,41 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: zipkin     # Name of the kubernetes resource
+  labels:                     # Labels that will be applied to this resource
+    app: zipkin
+spec:
+  replicas: 1                   # tells deployment to run 1 pod matching the template
+  selector:
+    matchLabels:                # The deployment applies to any pods mayching the specified labels
+      app: zipkin
+
+  template:                     # Template for creating the pods in this deployment
+    metadata:
+      labels:                   # Labels that will be applied to each Pod in this deployment
+        app: zipkin
+
+    spec:                       # Spec for the containers that will be run in the Pods
+      containers:
+      - name: zipkin
+        image: amandavkar/zipkin
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 9411
+---
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: zipkin
+  labels:
+    app: zipkin
+
+spec:
+  selector:
+    app: zipkin
+  type: ClusterIP # Can use type as LoadBalancer if more than 1 replica
+  ports:
+  - port: 9411
+    targetPort: 9411
+    protocol: TCP

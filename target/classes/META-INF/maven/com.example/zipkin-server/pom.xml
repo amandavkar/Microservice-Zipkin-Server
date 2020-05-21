@@ -9,7 +9,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>zipkin-server</name>
+	<name>zipkin</name>
 	<description>distributed tracing using cloud sleuth and zipkin</description>
 
 	<parent>
@@ -40,6 +40,13 @@
 			<groupId>io.zipkin.java</groupId>
 			<artifactId>zipkin-server</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-kubernetes -->
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-starter-kubernetes</artifactId>
+		    <version>1.1.2.RELEASE</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -54,7 +61,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>zipkin-server</finalName>
+		<finalName>zipkin</finalName>
 	</build>
 
 	<dependencyManagement>

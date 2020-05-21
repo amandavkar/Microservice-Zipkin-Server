@@ -1,0 +1,13 @@
+---
+- name: Create pods using deployment and service 
+  hosts: kubemaster
+  become: true
+  
+  tasks: 
+  - name: Copying kube file to kubemaster
+    copy: src=movie-info-service.yml dest=/home/vagrant/movie-info-service.yml
+
+  - name: create a deployment and service
+    become: true
+    become_user: vagrant
+    command: kubectl apply -f /home/vagrant/movie-info-service.yml
